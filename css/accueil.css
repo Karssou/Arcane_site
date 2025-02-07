@@ -1,11 +1,32 @@
-* {
+body {
   padding: 0;
   margin: 0;
 }
 
 #hero-banner {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  position: relative;
   width: 100vw;
   height: 100vh;
-  background: rgb(255, 0, 0);
+}
+#hero-banner video {
+  width: 100vw;
+  position: absolute;
+  height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -1;
+}
+#hero-banner #logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+}
+#hero-banner #logo-container #hero-title {
+  width: 50vw;
 }/*# sourceMappingURL=accueil.css.map */

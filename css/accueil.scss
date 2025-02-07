@@ -6,8 +6,28 @@ body {
 #hero-banner {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  padding: 0;
+  position: relative;
   width: 100vw;
   height: 100vh;
-  background: rgb(255, 0, 0);
+
+  video {
+    width: 100vw;
+    position: absolute;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+  }
+  #logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+
+    #hero-title {
+      width: 50vw;
+    }
+  }
 }
