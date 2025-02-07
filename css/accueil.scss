@@ -1,4 +1,4 @@
-* {
+body {
   padding: 0;
   margin: 0;
 }
@@ -6,18 +6,8 @@
 #hero-banner {
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: relative;
+  align-items: flex-end;
   width: 100vw;
   height: 100vh;
-  background: rgb(255, 0, 0); // Correction ici
-
-  #logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto; // Ou une largeur fixe pour tester
-    height: auto;
-    border: 2px solid white; // Debug
-  }
+  background: rgb(255, 0, 0);
 }
