@@ -10,23 +10,35 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="css/accueil.css" />
   </head>
   <body>
     <div id="navigation-container">
       <nav id="navbar">
         <ul class="navigation-menu">
-          <li class="nav-link"><a href="" class="nav-redir">Salut</a></li>
-          <li class="nav-link"><a href="" class="nav-redir">Salut</a></li>
-          <li class="nav-link"><a href="" class="nav-redir">Salut</a></li>
-          <li class="nav-link"><a href="" class="nav-redir">Salut</a></li>
+          <li class="nav-link"><a href="" class="nav-redir">Découvrir</a></li>
+          <li class="nav-link"><a href="" class="nav-redir">FORTICHE</a></li>
+          <li class="nav-link"><a href="" class="nav-redir">MAKING OF</a></li>
+          <li class="nav-link"><a href="" class="nav-redir">MUSIQUE</a></li>
         </ul>
       </nav>
     </div>
 
     <div id="hero-banner">
-      <video autoplay loop muted src=""></video>
+      <video
+        id="hero-video"
+        preload="metadata"
+        autoplay
+        loop
+        muted
+        src="assets/video/Acrane-Hero-Banner-Uhd-Compressed-2.mp4"
+      ></video>
       <div id="logo-container" class="salut">
         <img
           id="hero-title"
@@ -52,5 +64,15 @@
         </button>
       </div>
     </div>
+
+    <div class="test">
+      <h1>Salut</h1>
+      <h1>Salut</h1>
+      <h1>Salut</h1>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/accueil.js"></script>
   </body>
 </html>
