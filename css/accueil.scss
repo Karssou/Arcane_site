@@ -5,6 +5,14 @@
 
 /* FONTS */
 
+@font-face {
+  font-family: "font-arcane";
+  src: url("../assets/fonts/arcane_font.woff2") format("woff2"),
+    url("../assets/fonts/arcane_font.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 $font-playfair: "Playfair Display", serif;
 $font-lora: "Lora", serif;
 $font-robot: "Roboto", serif;
@@ -45,19 +53,36 @@ $color-netflix: #e50914;
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden !important;
-  overflow-y: hidden;
-  height: 100%;
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body {
+  scrollbar-gutter: stable;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  color: red;
 }
 
 #navigation-container {
   display: flex;
-  width: 100vw;
+  width: 100%;
   position: fixed;
   height: 70px;
   z-index: 10;
   top: 0;
-  right: 0;
+  left: 0;
   padding-top: 1vh;
   height: 4vh;
   align-items: center;
@@ -238,7 +263,7 @@ html {
   gap: 5vh;
 
   .discover-head {
-    padding-left: 1vw;
+    padding-left: 2vw;
     width: 100%;
     line-height: 1;
 
@@ -246,18 +271,18 @@ html {
       vertical-align: middle;
       line-height: 1;
       color: white;
-      font-size: 4.3rem;
-      font-family: $font-playfair;
+      font-size: 5rem;
+      font-family: "font-arcane";
       display: flex;
       justify-content: flex-start;
-      gap: 2rem;
-      padding: 0;
+      gap: 1rem;
+      padding-top: 1vh;
       margin: 0;
       text-transform: uppercase;
       align-items: center;
 
       img {
-        margin-bottom: -9px;
+        margin-bottom: -3px;
         vertical-align: middle;
         width: 20rem;
       }
@@ -266,11 +291,12 @@ html {
       color: white;
       font-size: 1.3rem;
       width: 60vw;
+      line-height: 1.5;
+      font-family: $font-playfair;
     }
   }
 
   .discover-content {
-    background-color: rgb(17, 0, 255);
     width: 100%;
     height: 100%;
     display: flex;
@@ -281,34 +307,34 @@ html {
     .discover-content-left {
       width: 100%;
       height: 100%;
-
       display: flex;
-      gap: 4vh;
+      gap: 2vh;
       align-items: flex-start;
       flex-direction: column;
       justify-content: space-evenly;
-      background-color: green;
-      flex-shrink: 1.5;
+
+      flex-shrink: 1.7;
 
       p {
         color: white;
         font-size: 1.7em;
-        padding-top: 10%;
+        padding-top: 9%;
         text-transform: uppercase;
         width: 80%;
-        line-height: 2;
-        height: 100%;
+        line-height: 2.5;
+        height: auto;
         font-family: $font-lora;
-        padding-left: 1vw;
+        padding-left: 2vw;
       }
 
       .discover-btn-watch {
-        margin-left: 1vw;
+        margin-left: 2vw;
+
         width: 250px;
         height: 50px;
         border-radius: 25px;
         background: transparent;
-        border: 4px solid $btn-color;
+        border: 4px solid $color-netflix;
 
         a {
           width: 100%;
@@ -332,7 +358,7 @@ html {
       .discover-content-sub-left {
         display: flex;
         flex-direction: column;
-        flex-shrink: 1.6;
+        flex-shrink: 1.7;
         align-items: center;
         justify-content: center;
         width: 100%;
@@ -355,12 +381,33 @@ html {
             gap: 5px;
             span {
               color: $btn-color;
+              font-weight: bold;
+              font-family: $font-robot;
               text-transform: uppercase;
             }
 
             svg {
               width: 24px;
               fill: #e0b96b;
+              transition: all 0.25s ease;
+            }
+          }
+
+          @keyframes pulse {
+            0% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.2);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+
+          &:hover {
+            svg {
+              animation: pulse 1s infinite;
             }
           }
         }
@@ -371,7 +418,6 @@ html {
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: red;
       width: 100%;
       height: 100%;
 
@@ -386,6 +432,7 @@ html {
           height: 100%;
           .splide__list {
             list-style: none;
+
             li {
               width: 100%;
               height: 90%;
@@ -431,7 +478,3 @@ html {
 /*---- EPISODES ---- */
 
 /*---- MAKING OF ---- */
-
-::-webkit-scrollbar {
-  position: absolute;
-}

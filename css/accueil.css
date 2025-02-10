@@ -4,6 +4,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 /* FONTS */
+@font-face {
+  font-family: "font-arcane";
+  src: url("../assets/fonts/arcane_font.woff2") format("woff2"), url("../assets/fonts/arcane_font.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 /* COULEURS */
 /* Fond principal, arrière-plan sombre */
 /* 	Titres, boutons, accents dorés (effet steampunk) */
@@ -34,19 +40,36 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden !important;
-  overflow-y: hidden;
-  height: 100%;
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body {
+  scrollbar-gutter: stable;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  color: red;
 }
 
 #navigation-container {
   display: flex;
-  width: 100vw;
+  width: 100%;
   position: fixed;
   height: 70px;
   z-index: 10;
   top: 0;
-  right: 0;
+  left: 0;
   padding-top: 1vh;
   height: 4vh;
   align-items: center;
@@ -215,7 +238,7 @@ html {
   gap: 5vh;
 }
 #div-discover .discover-head {
-  padding-left: 1vw;
+  padding-left: 2vw;
   width: 100%;
   line-height: 1;
 }
@@ -223,18 +246,18 @@ html {
   vertical-align: middle;
   line-height: 1;
   color: white;
-  font-size: 4.3rem;
-  font-family: "Playfair Display", serif;
+  font-size: 5rem;
+  font-family: "font-arcane";
   display: flex;
   justify-content: flex-start;
-  gap: 2rem;
-  padding: 0;
+  gap: 1rem;
+  padding-top: 1vh;
   margin: 0;
   text-transform: uppercase;
   align-items: center;
 }
 #div-discover .discover-head .title-discover img {
-  margin-bottom: -9px;
+  margin-bottom: -3px;
   vertical-align: middle;
   width: 20rem;
 }
@@ -242,9 +265,10 @@ html {
   color: white;
   font-size: 1.3rem;
   width: 60vw;
+  line-height: 1.5;
+  font-family: "Playfair Display", serif;
 }
 #div-discover .discover-content {
-  background-color: rgb(17, 0, 255);
   width: 100%;
   height: 100%;
   display: flex;
@@ -256,31 +280,30 @@ html {
   width: 100%;
   height: 100%;
   display: flex;
-  gap: 4vh;
+  gap: 2vh;
   align-items: flex-start;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: green;
-  flex-shrink: 1.5;
+  flex-shrink: 1.7;
 }
 #div-discover .discover-content .discover-content-left p {
   color: white;
   font-size: 1.7em;
-  padding-top: 10%;
+  padding-top: 9%;
   text-transform: uppercase;
   width: 80%;
-  line-height: 2;
-  height: 100%;
+  line-height: 2.5;
+  height: auto;
   font-family: "Lora", serif;
-  padding-left: 1vw;
+  padding-left: 2vw;
 }
 #div-discover .discover-content .discover-content-left .discover-btn-watch {
-  margin-left: 1vw;
+  margin-left: 2vw;
   width: 250px;
   height: 50px;
   border-radius: 25px;
   background: transparent;
-  border: 4px solid #b58646;
+  border: 4px solid #e50914;
 }
 #div-discover .discover-content .discover-content-left .discover-btn-watch a {
   width: 100%;
@@ -302,7 +325,7 @@ html {
 #div-discover .discover-content .discover-content-left .discover-content-sub-left {
   display: flex;
   flex-direction: column;
-  flex-shrink: 1.6;
+  flex-shrink: 1.7;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -326,17 +349,33 @@ html {
 }
 #div-discover .discover-content .discover-content-left .discover-content-sub-left .discover-btn-more a span {
   color: #b58646;
+  font-weight: bold;
+  font-family: "Roboto", serif;
   text-transform: uppercase;
 }
 #div-discover .discover-content .discover-content-left .discover-content-sub-left .discover-btn-more a svg {
   width: 24px;
   fill: #e0b96b;
+  transition: all 0.25s ease;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+#div-discover .discover-content .discover-content-left .discover-content-sub-left .discover-btn-more:hover svg {
+  animation: pulse 1s infinite;
 }
 #div-discover .discover-content .discover-content-right {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: red;
   width: 100%;
   height: 100%;
 }
@@ -386,7 +425,4 @@ html {
 /*---- MUSIQUE ---- */
 /*---- CRITIQUES ---- */
 /*---- EPISODES ---- */
-/*---- MAKING OF ---- */
-::-webkit-scrollbar {
-  position: absolute;
-}/*# sourceMappingURL=accueil.css.map */
+/*---- MAKING OF ---- *//*# sourceMappingURL=accueil.css.map */

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const lenis = new Lenis({
     lerp: 0.05,
-    wheelMultiplier: 1.5,
+    wheelMultiplier: 1,
   });
 
   lenis.overflow = false;
@@ -22,7 +22,16 @@ document.addEventListener("DOMContentLoaded", function () {
     updateOnMove: true,
     pagination: true,
     arrows: false,
-    autoplay: true,
+    autoplay: "pause",
+    intersection: {
+      inView: {
+        autoplay: true,
+      },
+      outView: {
+        autoplay: false,
+      },
+    },
+
     interval: 3000,
     pauseOnHover: false,
     speed: 1000,
