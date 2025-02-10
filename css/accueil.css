@@ -1,19 +1,48 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+/* FONTS */
+/* COULEURS */
+/* Fond principal, arrière-plan sombre */
+/* 	Titres, boutons, accents dorés (effet steampunk) */
+/* 	Titres, boutons, accents dorés (effet steampunk) */
+/* 	Détails lumineux (effet chimique, ambiance Zaun) */
+/* Effets lumineux, bordures, hover states*/
+/* Accent contrastant (ex. : survol d’un bouton, alerte) */
+/* Arrière-plans secondaires, textes en retrait */
+@keyframes glow {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.5);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+#hero-title {
+  animation: glow 7.5s infinite;
+}
+
 * {
   padding: 0;
   margin: 0;
 }
 
-body {
-  overflow-x: hidden;
-  overflow-y: scroll;
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
+  overflow-y: hidden;
+  height: 100%;
 }
 
 #navigation-container {
   display: flex;
   width: 100vw;
-  position: absolute;
+  position: fixed;
   height: 70px;
   z-index: 10;
   top: 0;
@@ -27,8 +56,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  opacity: 0.7;
+  transition: opacity 0.5s ease;
   height: 100%;
-  width: 50vw;
+  width: 65vw;
 }
 #navigation-container #navbar .navigation-menu {
   list-style: none;
@@ -52,13 +84,25 @@ body {
   height: 100%;
   text-decoration: none;
   text-transform: uppercase;
-  color: black;
+  color: rgb(255, 255, 255);
   font-family: "Poppins", serif;
 }
 #navigation-container #navbar .navigation-menu .nav-link:hover {
   transform: scale(1.3);
 }
 
+#navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 2.5px;
+  border-radius: 25px;
+  background-color: white;
+}
+
+/* ----- HERO BANNER ----- */
 #hero-banner {
   display: flex;
   flex-direction: column;
@@ -99,7 +143,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-#hero-banner #hero-info .button1 {
+#hero-banner #hero-info .hero-btn-decouv {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -107,9 +151,12 @@ body {
   width: 130px;
   height: 40px;
   border-radius: 25px;
-  transition: transform 0.15s ease-in-out;
+  background: linear-gradient(to right, #b58646, #e0b96b);
+  border: none;
+  transition: filter 1s ease-in-out;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
 }
-#hero-banner #hero-info .button1 a {
+#hero-banner #hero-info .hero-btn-decouv a {
   width: 100%;
   height: 100%;
   display: flex;
@@ -119,32 +166,227 @@ body {
   text-align: center;
   font-size: 12px;
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: white;
 }
-#hero-banner #hero-info .button1 a .hero-button-svg {
-  fill: rgb(0, 0, 0);
+#hero-banner #hero-info .hero-btn-decouv a .hero-button-svg {
+  fill: rgb(255, 255, 255);
   width: 24px;
   height: auto;
   vertical-align: middle;
   transition: transform 0.25s ease-out;
 }
-#hero-banner #hero-info .button1 a span {
+#hero-banner #hero-info .hero-btn-decouv a span {
   font-size: 12px;
   font-weight: bold;
+  background-clip: border-box;
   text-transform: uppercase;
   line-height: 0;
   font-family: "Roboto", serif;
   vertical-align: middle;
 }
-#hero-banner #hero-info .button1:hover .hero-button-svg {
+#hero-banner #hero-info:hover {
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.5));
+}
+#hero-banner #hero-info:hover .hero-button-svg {
   transform: translateX(5px);
 }
 
-.test {
-  background: black;
-  padding: 500px;
+.section-info {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0d0d0d;
 }
 
+.highlist-word {
+  background: linear-gradient(to right, #b58646, #e0b96b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+/*---- DECOUVRIR ---- */
+#div-discover {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 5vh;
+}
+#div-discover .discover-head {
+  padding-left: 1vw;
+  width: 100%;
+  line-height: 1;
+}
+#div-discover .discover-head .title-discover {
+  vertical-align: middle;
+  line-height: 1;
+  color: white;
+  font-size: 4.3rem;
+  font-family: "Playfair Display", serif;
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+  align-items: center;
+}
+#div-discover .discover-head .title-discover img {
+  margin-bottom: -9px;
+  vertical-align: middle;
+  width: 20rem;
+}
+#div-discover .discover-head .discover-subtitle {
+  color: white;
+  font-size: 1.3rem;
+  width: 60vw;
+}
+#div-discover .discover-content {
+  background-color: rgb(17, 0, 255);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+#div-discover .discover-content .discover-content-left {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 4vh;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: green;
+  flex-shrink: 1.5;
+}
+#div-discover .discover-content .discover-content-left p {
+  color: white;
+  font-size: 1.7em;
+  padding-top: 10%;
+  text-transform: uppercase;
+  width: 80%;
+  line-height: 2;
+  height: 100%;
+  font-family: "Lora", serif;
+  padding-left: 1vw;
+}
+#div-discover .discover-content .discover-content-left .discover-btn-watch {
+  margin-left: 1vw;
+  width: 250px;
+  height: 50px;
+  border-radius: 25px;
+  background: transparent;
+  border: 4px solid #b58646;
+}
+#div-discover .discover-content .discover-content-left .discover-btn-watch a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+#div-discover .discover-content .discover-content-left .discover-btn-watch a span {
+  color: #b58646;
+  text-transform: uppercase;
+}
+#div-discover .discover-content .discover-content-left .discover-btn-watch svg {
+  width: 24px;
+  fill: #e50914;
+}
+#div-discover .discover-content .discover-content-left .discover-content-sub-left {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1.6;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+#div-discover .discover-content .discover-content-left .discover-content-sub-left .discover-btn-more {
+  width: 250px;
+  height: 50px;
+  border-radius: 25px;
+  background: transparent;
+  border: 4px solid #b58646;
+}
+#div-discover .discover-content .discover-content-left .discover-content-sub-left .discover-btn-more a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+#div-discover .discover-content .discover-content-left .discover-content-sub-left .discover-btn-more a span {
+  color: #b58646;
+  text-transform: uppercase;
+}
+#div-discover .discover-content .discover-content-left .discover-content-sub-left .discover-btn-more a svg {
+  width: 24px;
+  fill: #e0b96b;
+}
+#div-discover .discover-content .discover-content-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  width: 100%;
+  height: 100%;
+}
+#div-discover .discover-content .discover-content-right .splide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+}
+#div-discover .discover-content .discover-content-right .splide .splide__track {
+  width: 100%;
+  height: 100%;
+}
+#div-discover .discover-content .discover-content-right .splide .splide__track .splide__list {
+  list-style: none;
+}
+#div-discover .discover-content .discover-content-right .splide .splide__track .splide__list li {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#div-discover .discover-content .discover-content-right .splide .splide__track .splide__list li div {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background: #b58646;
+  opacity: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#div-discover .discover-content .discover-content-right .splide .splide__track .splide__list li img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#div-discover .discover-content .splide__pagination__page {
+  background-color: #b58646;
+}
+
+/*---- PERSONNAGES ---- */
+/*---- FORTICHE ---- */
+/*---- MUSIQUE ---- */
+/*---- CRITIQUES ---- */
+/*---- EPISODES ---- */
+/*---- MAKING OF ---- */
 ::-webkit-scrollbar {
-  display: none;
+  position: absolute;
 }/*# sourceMappingURL=accueil.css.map */

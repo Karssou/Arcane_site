@@ -1,20 +1,59 @@
 @import url("https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+/* FONTS */
+
+$font-playfair: "Playfair Display", serif;
+$font-lora: "Lora", serif;
+$font-robot: "Roboto", serif;
+$font-montserrat: "Montserrat", serif;
+$font-poppins: "Poppins", serif;
+
+/* COULEURS */
+
+$background-black: #0d0d0d; /* Fond principal, arrière-plan sombre */
+$btn-color: #b58646; /* 	Titres, boutons, accents dorés (effet steampunk) */
+$title-color: #b58646; /* 	Titres, boutons, accents dorés (effet steampunk) */
+$light-detail-color: #2dbf7f; /* 	Détails lumineux (effet chimique, ambiance Zaun) */
+$light-effect-color: #3d7ea6; /* Effets lumineux, bordures, hover states*/
+$alert-color: #a64246; /* Accent contrastant (ex. : survol d’un bouton, alerte) */
+$subtexte-color: #3a3a3a; /* Arrière-plans secondaires, textes en retrait */
+$color-netflix: #e50914;
+
+@keyframes glow {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.5);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+#hero-title {
+  animation: glow 7.5s infinite;
+}
 
 * {
   padding: 0;
   margin: 0;
 }
 
-body {
-  overflow-x: hidden;
-  overflow-y: scroll;
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
+  overflow-y: hidden;
+  height: 100%;
 }
 
 #navigation-container {
   display: flex;
   width: 100vw;
-  position: absolute;
+  position: fixed;
   height: 70px;
   z-index: 10;
   top: 0;
@@ -23,13 +62,17 @@ body {
   height: 4vh;
   align-items: center;
   justify-content: center;
+
   #navbar {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    position: relative;
+    opacity: 0.7;
+    transition: opacity 0.5s ease;
     height: 100%;
-    width: 50vw;
+    width: 65vw;
+
     .navigation-menu {
       list-style: none;
       display: flex;
@@ -52,7 +95,7 @@ body {
           height: 100%;
           text-decoration: none;
           text-transform: uppercase;
-          color: black;
+          color: rgb(255, 255, 255);
           font-family: "Poppins", serif;
         }
       }
@@ -62,6 +105,19 @@ body {
     }
   }
 }
+
+#navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 2.5px;
+  border-radius: 25px;
+  background-color: white;
+}
+
+/* ----- HERO BANNER ----- */
 
 #hero-banner {
   display: flex;
@@ -76,7 +132,7 @@ body {
   #hero-video {
     width: 100vw;
     position: absolute;
-    object-fit:cover;
+    object-fit: cover;
     will-change: transform;
     height: 100vh;
     z-index: -10;
@@ -103,7 +159,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    .button1 {
+
+    .hero-btn-decouv {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -111,7 +168,10 @@ body {
       width: 130px;
       height: 40px;
       border-radius: 25px;
-      transition: transform 0.15s ease-in-out;
+      background: linear-gradient(to right, #b58646, #e0b96b);
+      border: none;
+      transition: filter 1s ease-in-out;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
 
       a {
         width: 100%;
@@ -123,10 +183,10 @@ body {
         text-align: center;
         font-size: 12px;
         text-decoration: none;
-        color: rgb(0, 0, 0);
+        color: white;
 
         .hero-button-svg {
-          fill: rgb(0, 0, 0);
+          fill: rgb(255, 255, 255);
           width: 24px;
           height: auto;
           vertical-align: middle;
@@ -136,6 +196,7 @@ body {
         span {
           font-size: 12px;
           font-weight: bold;
+          background-clip: border-box;
           text-transform: uppercase;
           line-height: 0;
           font-family: "Roboto", serif;
@@ -143,7 +204,8 @@ body {
         }
       }
     }
-    .button1:hover {
+    &:hover {
+      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.5));
       .hero-button-svg {
         transform: translateX(5px);
       }
@@ -151,11 +213,225 @@ body {
   }
 }
 
-.test {
-  background: black;
-  padding: 500px;
+.section-info {
+  width: 100vw;
+  height: 100vh;
+  background-color: $background-black;
 }
 
+.highlist-word {
+  background: linear-gradient(to right, #b58646, #e0b96b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+/*---- DECOUVRIR ---- */
+
+#div-discover {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 5vh;
+
+  .discover-head {
+    padding-left: 1vw;
+    width: 100%;
+    line-height: 1;
+
+    .title-discover {
+      vertical-align: middle;
+      line-height: 1;
+      color: white;
+      font-size: 4.3rem;
+      font-family: $font-playfair;
+      display: flex;
+      justify-content: flex-start;
+      gap: 2rem;
+      padding: 0;
+      margin: 0;
+      text-transform: uppercase;
+      align-items: center;
+
+      img {
+        margin-bottom: -9px;
+        vertical-align: middle;
+        width: 20rem;
+      }
+    }
+    .discover-subtitle {
+      color: white;
+      font-size: 1.3rem;
+      width: 60vw;
+    }
+  }
+
+  .discover-content {
+    background-color: rgb(17, 0, 255);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
+
+    .discover-content-left {
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+      gap: 4vh;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: space-evenly;
+      background-color: green;
+      flex-shrink: 1.5;
+
+      p {
+        color: white;
+        font-size: 1.7em;
+        padding-top: 10%;
+        text-transform: uppercase;
+        width: 80%;
+        line-height: 2;
+        height: 100%;
+        font-family: $font-lora;
+        padding-left: 1vw;
+      }
+
+      .discover-btn-watch {
+        margin-left: 1vw;
+        width: 250px;
+        height: 50px;
+        border-radius: 25px;
+        background: transparent;
+        border: 4px solid $btn-color;
+
+        a {
+          width: 100%;
+          height: 100%;
+          text-decoration: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+          span {
+            color: $btn-color;
+            text-transform: uppercase;
+          }
+        }
+        svg {
+          width: 24px;
+          fill: $color-netflix;
+        }
+      }
+
+      .discover-content-sub-left {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 1.6;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+
+        .discover-btn-more {
+          width: 250px;
+          height: 50px;
+          border-radius: 25px;
+          background: transparent;
+          border: 4px solid $btn-color;
+
+          a {
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            span {
+              color: $btn-color;
+              text-transform: uppercase;
+            }
+
+            svg {
+              width: 24px;
+              fill: #e0b96b;
+            }
+          }
+        }
+      }
+    }
+
+    .discover-content-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: red;
+      width: 100%;
+      height: 100%;
+
+      .splide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 80%;
+        .splide__track {
+          width: 100%;
+          height: 100%;
+          .splide__list {
+            list-style: none;
+            li {
+              width: 100%;
+              height: 90%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              div {
+                width: 100%;
+                height: 100%;
+                border-radius: 15px;
+                background: $btn-color;
+                opacity: 1;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+              }
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .splide__pagination__page {
+      background-color: $btn-color;
+    }
+  }
+}
+
+/*---- PERSONNAGES ---- */
+
+/*---- FORTICHE ---- */
+
+/*---- MUSIQUE ---- */
+
+/*---- CRITIQUES ---- */
+
+/*---- EPISODES ---- */
+
+/*---- MAKING OF ---- */
+
 ::-webkit-scrollbar {
-  display: none;
+  position: absolute;
 }

@@ -1,41 +1,30 @@
-// Attendre que la page soit chargée
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.to("#hero-video", {
-    scale: 1.2, // Zoom léger pour donner un effet de profondeur
-    y: -100, // Décalage progressif vers le haut
-    scrollTrigger: {
-      trigger: "#hero-banner",
-      start: "top bottom", // Déclenchement au début du scroll
-      end: "bottom top", // Fin de l'effet
-      scrub: 2, // Effet fluide
-    },
+  const lenis = new Lenis({
+    lerp: 0.05,
+    wheelMultiplier: 1.5,
   });
 
-  // Effet plus léger sur le logo
-  gsap.to("#hero-title", {
-    yPercent: 10, // Déplacement plus subtil
-    opacity: 0.8, // Effet de fondu léger
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#hero-banner",
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
+  lenis.overflow = false;
 
-  // Effet sur le bouton
-  gsap.to("#hero-info", {
-    yPercent: 5,
-    opacity: 0.9,
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#hero-banner",
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  new Splide("#splide-carousel", {
+    type: "loop",
+    perPage: 1,
+    lazyload: "sequential",
+    gap: "4vh",
+    updateOnMove: true,
+    pagination: true,
+    arrows: false,
+    autoplay: true,
+    interval: 3000,
+    pauseOnHover: false,
+    speed: 1000,
+  }).mount();
 });
