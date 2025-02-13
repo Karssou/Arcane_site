@@ -36,6 +36,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -43,11 +44,14 @@ html {
   scrollbar-gutter: stable;
   overflow-y: scroll;
   overflow-x: hidden;
+  scroll-snap-type: y proximity;
 }
 
 body {
+  background-color: #0d0d0d;
   scrollbar-gutter: stable;
   overflow: hidden;
+  scroll-snap-type: y proximity;
 }
 
 ::-webkit-scrollbar {
@@ -67,7 +71,7 @@ body {
   width: 100%;
   position: fixed;
   height: 70px;
-  z-index: 10;
+  z-index: 100;
   top: 0;
   left: 0;
   padding-top: 1vh;
@@ -80,7 +84,7 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  opacity: 0.7;
+  opacity: 1;
   transition: opacity 0.5s ease;
   height: 100%;
   width: 65vw;
@@ -142,7 +146,7 @@ body {
      object-fit: cover;
   will-change: transform;
   height: 100vh;
-  z-index: -10;
+  z-index: -1;
 }
 #hero-banner #logo-container {
   display: flex;
@@ -176,8 +180,9 @@ body {
   border-radius: 25px;
   background: linear-gradient(to right, #b58646, #e0b96b);
   border: none;
-  transition: filter 1s ease-in-out;
+  transition: all 1s ease-in-out;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+  transform-origin: center;
 }
 #hero-banner #hero-info .hero-btn-decouv a {
   width: 100%;
@@ -207,10 +212,10 @@ body {
   font-family: "Roboto", serif;
   vertical-align: middle;
 }
-#hero-banner #hero-info:hover {
+#hero-banner #hero-info .hero-btn-decouv:hover {
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.5));
 }
-#hero-banner #hero-info:hover .hero-button-svg {
+#hero-banner #hero-info .hero-btn-decouv:hover .hero-button-svg {
   transform: translateX(5px);
 }
 
@@ -218,6 +223,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #0d0d0d;
+  scroll-snap-align: end;
 }
 
 .highlist-word {
@@ -229,20 +235,35 @@ body {
 }
 
 /*---- DECOUVRIR ---- */
+#discover {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
 #div-discover {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  gap: 5vh;
+  z-index: 4;
 }
-#div-discover .discover-head {
+#div-discover .discover-head,
+#div-discover .section-head {
   padding-left: 2vw;
   width: 100%;
+  max-height: 300px;
   line-height: 1;
+  margin-bottom: 5vh;
 }
-#div-discover .discover-head .title-discover {
+#div-discover .discover-head .title-discover,
+#div-discover .discover-head .title,
+#div-discover .section-head .title-discover,
+#div-discover .section-head .title {
   vertical-align: middle;
   line-height: 1;
   color: white;
@@ -256,15 +277,19 @@ body {
   text-transform: uppercase;
   align-items: center;
 }
-#div-discover .discover-head .title-discover img {
+#div-discover .discover-head .title-discover img,
+#div-discover .discover-head .title img,
+#div-discover .section-head .title-discover img,
+#div-discover .section-head .title img {
   margin-bottom: -3px;
   vertical-align: middle;
   width: 20rem;
 }
-#div-discover .discover-head .discover-subtitle {
+#div-discover .discover-head .discover-subtitle,
+#div-discover .section-head .discover-subtitle {
   color: white;
-  font-size: 1.3rem;
-  width: 60vw;
+  font-size: 0.8vw;
+  width: 80%;
   line-height: 1.5;
   font-family: "Playfair Display", serif;
 }
@@ -272,64 +297,47 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-grow: 1;
   flex-direction: row;
-  justify-content: space-evenly;
   align-items: flex-end;
 }
 #div-discover .discover-content .discover-content-left {
   width: 100%;
   height: 100%;
   display: flex;
-  gap: 2vh;
+  align-items: center;
+  flex-direction: column;
+  flex-basis: 40%;
+}
+#div-discover .discover-content .discover-content-left .discover-content-left-main {
+  flex-basis: 70%;
+  max-width: 730px;
+  display: flex;
+  flex-grow: 1;
   align-items: flex-start;
   flex-direction: column;
-  justify-content: space-evenly;
-  flex-shrink: 1.7;
+  justify-content: flex-start;
 }
-#div-discover .discover-content .discover-content-left p {
+#div-discover .discover-content .discover-content-left .discover-content-left-main p {
   color: white;
-  font-size: 1.7em;
-  padding-top: 9%;
+  font-size: clamp(20px, 1.2vw, 1.3vw);
   text-transform: uppercase;
-  width: 80%;
+  width: 100%;
   line-height: 2.5;
   height: auto;
+  text-align: justify;
   font-family: "Lora", serif;
   padding-left: 2vw;
-}
-#div-discover .discover-content .discover-content-left .discover-btn-watch {
-  margin-left: 2vw;
-  width: 250px;
-  height: 50px;
-  border-radius: 25px;
-  background: transparent;
-  border: 4px solid #e50914;
-}
-#div-discover .discover-content .discover-content-left .discover-btn-watch a {
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-#div-discover .discover-content .discover-content-left .discover-btn-watch a span {
-  color: #b58646;
-  text-transform: uppercase;
-}
-#div-discover .discover-content .discover-content-left .discover-btn-watch svg {
-  width: 24px;
-  fill: #e50914;
+  padding: clamp(10%, 3vh, 10%) 0 0 2vw;
 }
 #div-discover .discover-content .discover-content-left .discover-content-sub-left {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 1.7;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
+  flex-basis: 5%;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #div-discover .discover-content .discover-content-left .discover-content-sub-left .discover-btn-more {
   width: 250px;
@@ -348,10 +356,13 @@ body {
   gap: 5px;
 }
 #div-discover .discover-content .discover-content-left .discover-content-sub-left .discover-btn-more a span {
-  color: #b58646;
   font-weight: bold;
   font-family: "Roboto", serif;
   text-transform: uppercase;
+  background: linear-gradient(to right, #b58646, #e0b96b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 #div-discover .discover-content .discover-content-left .discover-content-sub-left .discover-btn-more a svg {
   width: 24px;
@@ -374,55 +385,349 @@ body {
 }
 #div-discover .discover-content .discover-content-right {
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 65%;
+  flex-grow: 1;
 }
 #div-discover .discover-content .discover-content-right .splide {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
-  height: 80%;
-}
-#div-discover .discover-content .discover-content-right .splide .splide__track {
+  flex-direction: column;
   width: 100%;
   height: 100%;
+}
+#div-discover .discover-content .discover-content-right .splide .splide__track {
+  width: 85%;
+  height: 85%;
 }
 #div-discover .discover-content .discover-content-right .splide .splide__track .splide__list {
   list-style: none;
+  width: 100%;
+  height: 100%;
 }
 #div-discover .discover-content .discover-content-right .splide .splide__track .splide__list li {
   width: 100%;
-  height: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#div-discover .discover-content .discover-content-right .splide .splide__track .splide__list li div {
-  width: 100%;
   height: 100%;
+}
+#div-discover .discover-content .discover-content-right .splide .splide__track .splide__list li .slide_div {
+  width: 100%;
+  height: 50vh;
   border-radius: 15px;
   background: #b58646;
   opacity: 1;
-  height: 100%;
   position: relative;
   overflow: hidden;
 }
-#div-discover .discover-content .discover-content-right .splide .splide__track .splide__list li img {
+#div-discover .discover-content .discover-content-right .splide .splide__track .splide__list li .slide_div .slide_img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-#div-discover .discover-content .splide__pagination__page {
-  background-color: #b58646;
+#div-discover .discover-content .discover-content-right #discover-progress-bar-container {
+  width: 100%;
+  height: 100%;
+  flex-basis: 5%;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#div-discover .discover-content .discover-content-right #discover-progress-bar-container #progress-bar {
+  width: 70%;
+  height: 6px;
+  border-radius: 50px;
+  background-color: white;
+}
+#div-discover .discover-content .discover-content-right #discover-progress-bar-container #progress-bar #progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #b58646, #e0b96b);
+  border-radius: 50px;
+  transition: width 0.5s ease-out;
 }
 
-/*---- PERSONNAGES ---- */
-/*---- FORTICHE ---- */
+#transition-quote {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  z-index: 6;
+  pointer-events: none;
+  justify-content: center;
+  flex-direction: column;
+  transition: transform 1.2s ease-out, opacity 0.2s;
+  text-transform: uppercase;
+  gap: 2vh;
+  padding: 0 2% 0 2%;
+  background: linear-gradient(to right, #b58646, #e0b96b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+#transition-quote #quote-text {
+  font-size: clamp(2rem, 2vw, 2vw);
+  transition: scale 1s ease;
+  text-align: center;
+  line-height: 1.5;
+}
+#transition-quote #author {
+  font-size: clamp(2rem, 1vw, 1vw);
+}
+
+/*---- CREATION ---- */
+#creation {
+  width: 100vw;
+  height: auto;
+  background-color: #3a3a3a;
+  position: relative;
+  z-index: 5;
+}
+#creation #createurs {
+  display: flex;
+  width: 100vw;
+  height: auto;
+  flex-direction: column;
+  background-color: #0d0d0d;
+}
+#creation #createurs #creator-paragraph-entry-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+  display: flex;
+  background: #0d0d0d;
+  justify-content: center;
+  align-items: center;
+}
+#creation #createurs #creator-paragraph-entry-container .p-entry-creator {
+  color: white;
+  font-weight: bold;
+  line-height: 2;
+  font-size: 2vw;
+  text-transform: uppercase;
+  text-align: justify;
+  width: 50%;
+  height: 50%;
+}
+#creation #createurs #creator-fixed-background {
+  background-image: url(../assets/image/creation/creator/Vi-powder-piltover_night-background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 1;
+}
+#creation #createurs #creator-fixed-background .cache {
+  width: 100vw;
+  height: 20vh;
+  background: linear-gradient(to top, rgb(0, 0, 0), transparent);
+}
+#creation #createurs #creator-fixed-background .cache-top {
+  background: linear-gradient(to bottom, rgb(0, 0, 0), transparent);
+}
+#creation #createurs #creator-content {
+  width: 100vw;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+  background: none;
+  z-index: 10;
+}
+#creation #createurs #creator-content .div-creator-subsection {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#creation #createurs #creator-content #div-creator-chlinke #creator-content-left-chlinke {
+  height: 100vh;
+  width: 100vw;
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: red;
+  padding: 0;
+}
+#creation #createurs #creator-content #div-creator-chlinke #creator-content-left-chlinke .creator-container {
+  padding: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+#creation #createurs #creator-content #div-creator-chlinke #creator-content-left-chlinke .creator-container .img-container {
+  width: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+}
+#creation #createurs #creator-content #div-creator-chlinke #creator-content-left-chlinke .creator-container .img-container img {
+  width: 100%;
+}
+#creation #createurs #creator-content #div-creator-chlinke #creator-content-left-chlinke .creator-container .information-container {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 1vw;
+}
+#creation #createurs #creator-content #div-creator-chlinke #creator-content-left-chlinke .creator-container .information-container span {
+  color: white;
+  text-transform: uppercase;
+}
+#creation #createurs #creator-content #div-creator-chlinke #creator-content-left-chlinke .creator-container .information-container .span-information-creator {
+  background: linear-gradient(to right, #b58646, #e0b96b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  font-size: 3rem;
+}
+#creation #createurs #creator-content #div-creator-chlinke #creator-content-left-chlinke .creator-container .information-container .span-sub-information-creator {
+  font-size: 1.5rem;
+}
+#creation #createurs #creator-content #div-creator-chlinke #creator-content-right-chlinke {
+  height: 100vh;
+  width: 100%;
+  flex-basis: 50%;
+  flex-grow: 1;
+}
+#creation #fortiche {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#creation #fortiche h1 {
+  color: white;
+  font-size: 34px;
+}
+
 /*---- MUSIQUE ---- */
-/*---- CRITIQUES ---- */
-/*---- EPISODES ---- */
-/*---- MAKING OF ---- *//*# sourceMappingURL=accueil.css.map */
+/*---- CRITIQUES & AWARDS ---- */
+/*---- MAKING OF ---- */
+#float-btn-netflix {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  pointer-events: none;
+  right: 0;
+  margin: 20px;
+  width: 3vw;
+  opacity: 0;
+  height: 3vw;
+  background: none;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid #e50914;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+  transform-origin: right;
+}
+#float-btn-netflix .a-netflix {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  position: relative;
+}
+#float-btn-netflix .a-netflix .span-netflix {
+  font-family: "Roboto", serif;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #e50914;
+  opacity: 0;
+  white-space: nowrap;
+  transition: left 0.3s ease-out, opacity 0.3s ease-out;
+  position: absolute;
+  left: 120%;
+}
+#float-btn-netflix .a-netflix svg {
+  fill: #e50914;
+  width: 2vw;
+  transition: all 0.2s ease;
+}
+#float-btn-netflix:hover {
+  border-radius: 15px;
+  width: 10vw;
+  opacity: 1;
+  padding-right: 1vw;
+}
+#float-btn-netflix:hover .a-netflix {
+  justify-content: flex-start;
+  padding-left: 5px;
+}
+#float-btn-netflix:hover .a-netflix .span-netflix {
+  left: 30%;
+  opacity: 1;
+}
+#float-btn-netflix.show-floating-button {
+  pointer-events: all;
+  opacity: 1;
+}
+
+#float-btn-back {
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+  width: 2vw;
+  height: 2vw;
+  opacity: 0;
+  background: none;
+  overflow: hidden;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.5s ease;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#float-btn-back svg {
+  transition: all 0.25s ease-out;
+  fill: white;
+}
+#float-btn-back::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  padding: 5.5px;
+  background: linear-gradient(to right, #b58646, #e0b96b);
+  -webkit-mask: linear-gradient(white, white) content-box, linear-gradient(white, white);
+          mask: linear-gradient(white, white) content-box, linear-gradient(white, white);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  -webkit-mask: linear-gradient(white, white) content-box, linear-gradient(white, white);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+#float-btn-back.show-floating-button {
+  opacity: 1;
+}
+#float-btn-back.show-floating-button:hover svg {
+  transform: translateY(-2px);
+}/*# sourceMappingURL=accueil.css.map */

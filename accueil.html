@@ -19,17 +19,19 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
     <div id="navigation-container">
       <nav id="navbar">
         <ul class="navigation-menu">
           <li class="nav-link">
-            <a href="#personnages" class="nav-redir">PERSONNAGES</a>
+            <a href="" class="nav-redir">création</a>
           </li>
-          <li class="nav-link"><a href="" class="nav-redir">création</a></li>
+
           <li class="nav-link"><a href="" class="nav-redir">Musique</a></li>
-          <li class="nav-link"><a href="" class="nav-redir">Critiques</a></li>
-          <li class="nav-link"><a href="" class="nav-redir">épisodes</a></li>
+          <li class="nav-link">
+            <a href="" class="nav-redir">Critiques & impact</a>
+          </li>
           <li class="nav-link">
             <a href="#making-of" class="nav-redir">MAKING OF</a>
           </li>
@@ -56,7 +58,7 @@
       </div>
       <div id="hero-info">
         <button class="hero-btn-decouv">
-          <a class="hero-redirection-btn" href="#discover"
+          <a class="hero-redirection-btn scroll-link" href="#discover"
             ><span>Découvrir</span>
             <svg
               class="hero-button-svg"
@@ -72,164 +74,215 @@
       </div>
     </div>
 
-    <section class="section-info" id="discover">
-      <div id="div-discover">
-        <div class="section-head discover-head">
-          <span class="title title-discover">
-            Découvrir l'univers
-            <img src="assets/image/Arcane-logo.png" alt="" />
-          </span>
-          <p class="section-subtitle discover-subtitle">
-            Entrez dans un univers où la science et la magie façonnent des
-            destins brisés. Des hauteurs éclatantes de Piltover aux profondeurs
-            sombres de Zaun, explorez les secrets d’Arcane, ses personnages
-            inoubliables et l’ingéniosité derrière cette œuvre magistrale.
-          </p>
-        </div>
-        <div class="discover-content">
-          <div class="discover-content-left">
-            <p class="discover-info">
-              <span class="highlist-word">Arcane</span> est une série
-              d’animation inspirée de l’univers de
-              <span class="highlist-word">League of Legends</span>. L’histoire
-              suit <span class="highlist-word">Vi</span> et
-              <span class="highlist-word">Jinx</span>, deux sœurs séparées par
-              la violence d’un monde en plein bouleversement À travers
-              <span class="highlist-word">Piltover</span>, la cité du progrès,
-              et <span class="highlist-word">Zaun</span>, ses bas-fonds oubliés.
+    <main class="section-container">
+      <section class="section-info section" id="discover">
+        <div id="div-discover">
+          <div class="section-head discover-head">
+            <span class="title title-discover">
+              Découvrir l'univers
+              <img src="assets/image/Arcane-logo.png" alt="" />
+            </span>
+            <p class="section-subtitle discover-subtitle">
+              Entrez dans un univers où la science et la magie façonnent des
+              destins brisés. Des hauteurs éclatantes de Piltover aux
+              profondeurs sombres de Zaun, explorez les secrets d’Arcane, ses
+              personnages inoubliables et l’ingéniosité derrière cette œuvre
+              magistrale.
             </p>
-            <button class="discover-btn-watch">
-              <a href="" class="discover-a-watch">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path
-                    d="M11.2917 3.81415L13.3102 9.52081L13.7059 10.6371L13.7132 5.82625L13.7222 1.00908H17.9931L18.0004 11.8713C18.0031 17.8519 17.9967 22.7617 17.9849 22.7708C17.9731 22.7798 17.7762 22.7708 17.5493 22.7435C16.5601 22.6256 15.2596 22.5076 14.2096 22.4622C13.8629 22.4459 13.5761 22.4277 13.5725 22.4241C13.5698 22.4205 13.3002 21.6618 12.7966 20.2397L12.7967 20.2359C12.3051 18.8476 11.5851 16.8121 10.653 14.1746L10.3126 13.2214L10.3054 17.8066C10.299 22.1718 10.2954 22.4168 10.2482 22.4168C10.0849 22.4168 8.67819 22.5076 8.20809 22.553C7.89953 22.5802 7.28241 22.6437 6.83772 22.6982C6.39212 22.749 6.02185 22.7835 6.01459 22.7762C6.00733 22.7689 6.00098 17.8674 6.00098 11.8831V1.00182H6.00615L6.00551 1H10.2936L10.3217 1.08077C10.3288 1.09558 10.3865 1.25644 10.479 1.51683L11.1204 3.29515L11.2928 3.79066L11.2917 3.81415Z"
-                  ></path>
-                </svg>
-                <span>Regarder sur Netflix</span>
-              </a>
-            </button>
-            <div class="discover-content-sub-left">
-              <button class="discover-btn-more">
-                <a href="" class="discover-a-more"
-                  ><span>Plus d'informations</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path
-                      d="M13.0001 16.1716L18.3641 10.8076L19.7783 12.2218L12.0001 20L4.22192 12.2218L5.63614 10.8076L11.0001 16.1716V4H13.0001V16.1716Z"
-                    ></path></svg
-                ></a>
-              </button>
+          </div>
+          <div class="discover-content">
+            <div class="discover-content-left discover-content-split">
+              <div class="discover-content-left-main">
+                <p class="discover-info">
+                  <span class="highlist-word">Arcane</span> est une série
+                  d’animation inspirée de l’univers de
+                  <span class="highlist-word">League of Legends</span>.
+                  L’histoire suit <span class="highlist-word">Vi</span> et
+                  <span class="highlist-word">Jinx</span>, deux sœurs séparées
+                  par la violence d’un monde en plein bouleversement À travers
+                  <span class="highlist-word">Piltover</span>, la cité du
+                  progrès, et <span class="highlist-word">Zaun</span>, ses
+                  bas-fonds oubliés.
+                </p>
+              </div>
+              <div class="discover-content-sub-left">
+                <button class="discover-btn-more" id="btn-discover-more">
+                  <a href="#creation" class="discover-a-more scroll-link"
+                    ><span>Plus d'informations</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path
+                        d="M13.0001 16.1716L18.3641 10.8076L19.7783 12.2218L12.0001 20L4.22192 12.2218L5.63614 10.8076L11.0001 16.1716V4H13.0001V16.1716Z"
+                      ></path></svg
+                  ></a>
+                </button>
+              </div>
+            </div>
+            <div class="discover-content-right discover-content-split">
+              <section
+                class="splide"
+                id="splide-carousel"
+                aria-label="Carousel-Arcane-Discover"
+              >
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    <li class="splide__slide">
+                      <div class="slide_div">
+                        <img
+                          class="slide_img"
+                          src="assets/image/diap/discover/Zaun.jpg"
+                          alt=""
+                        />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="slide_div">
+                        <img
+                          class="slide_img"
+                          src="assets/image/diap/discover/Piltover.jpg"
+                          alt=""
+                        />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="slide_div">
+                        <img
+                          class="slide_img"
+                          src="assets/image/diap/discover/Jinx-fuse.jpg"
+                          alt=""
+                        />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="slide_div">
+                        <img
+                          class="slide_img"
+                          src="assets/image/diap/discover/Vi-Powder.jpg"
+                          alt=""
+                        />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="slide_div">
+                        <img
+                          class="slide_img"
+                          src="assets/image/diap/discover/Jayce-victor.jpg"
+                          alt=""
+                        />
+                      </div>
+                    </li>
+                    <li class="splide__slide">
+                      <div class="slide_div">
+                        <img
+                          class="slide_img"
+                          src="assets/image/diap/discover/arbre-mojo.jpg"
+                          alt=""
+                        />
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+              <div id="discover-progress-bar-container">
+                <div id="progress-bar"><div id="progress"></div></div>
+              </div>
             </div>
           </div>
-          <div class="discover-content-right">
-            <section
-              class="splide"
-              id="splide-carousel"
-              aria-label="Splide Basic HTML Example"
-            >
-              <div class="splide__track">
-                <ul class="splide__list">
-                  <li class="splide__slide">
-                    <div class="slide_div">
-                      <img
-                        class="slide_img"
-                        src="assets/image/diap/discover/Zaun.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </li>
-                  <li class="splide__slide">
-                    <div class="slide_div">
-                      <img
-                        class="slide_img"
-                        src="assets/image/diap/discover/Piltover.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </li>
-                  <li class="splide__slide">
-                    <div class="slide_div">
-                      <img
-                        class="slide_img"
-                        src="assets/image/diap/discover/Jinx-fuse.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </li>
-                  <li class="splide__slide">
-                    <div class="slide_div">
-                      <img
-                        class="slide_img"
-                        src="assets/image/diap/discover/Vi-Powder.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </li>
-                  <li class="splide__slide">
-                    <div class="slide_div">
-                      <img
-                        class="slide_img"
-                        src="assets/image/diap/discover/Jayce-victor.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </li>
-                  <li class="splide__slide">
-                    <div class="slide_div">
-                      <img
-                        class="slide_img"
-                        src="assets/image/diap/discover/arbre-mojo.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </section>
+        </div>
+      </section>
+
+      <div id="transition-quote">
+        <span id="quote-text"
+          >On voulait créer quelque chose d’unique, qui ne ressemblerait à rien
+          d’autre...</span
+        >
+        <span id="author">- Christian Linke</span>
+      </div>
+
+      <section class="section-info section" id="creation">
+        <section class="section-info section" id="createurs">
+          <div id="creator-paragraph-entry-container">
+            <span class="p-entry-creator">
+              Derrière l’incroyable univers d’<span class="highlist-word">Arcane</span> se cachent deux <span class="highlist-word">esprits
+              visionnaires</span> qui ont su <span class="highlist-word">transformer</span> un simple concept de jeu en
+              une <span class="highlist-word">œuvre animée révolutionnaire</span>. Découvrez comment <span class="highlist-word">Christian
+              Linke</span> et <span class="highlist-word">Alex Yee</span> ont imaginé et façonné l’<span class="highlist-word">histoire</span> de la série
+            </p>
           </div>
-        </div>
-      </div>
-    </section>
+          <div id="creator-fixed-background">
+            <div class="cache cache-top"></div>
 
-    <section class="section-info" id="fortiche">
-      <div id="fortiche">
-        <h1>FORTICHE</h1>
-      </div>
-    </section>
+            <div class="cache"></div>
+          </div>
+          <div id="creator-content">
+            <div id="div-creator-chlinke" class="div-creator-subsection">
+            <div id="creator-content-left-chlinke" class="div-creators-image div-creator_split">
+              <div class="creator-container">
+                <div class="img-container">
+                <img src="assets/image/creation/creator/Christian-linke.jpg" alt="" class="img-christian-linke">
+                </div>
+                <div class="information-container">
+                  <span class="span-information-creator">Christan Linke</span>
+                  <span class="span-sub-information-creator">Directeur Créatif & Compositeur</span>
+                </div>   
+              </div>
+              
+              
+            </div>
+            <div id="creator-content-right-chlinke" class="div-creators-para div-creator_split">
+            </div>
+           </div>
+            <div id="div-creator-alexyee" class="div-creator-subsection">
+              <div id="creator-content-left-alexyee" class="div-creators-image div-creator_split"></div>
+            <div id="creator-content-right-alexyee" class="div-creators-para div-creator_split"></div>
+          </div>
+          
+          </div>
+        </section>
 
-    <section class="section-info" id="musique"></section>
-    <section class="section-info" id="making-of">
-      <div class="content">
-        <h1>content</h1>
-      </div>
-      <footer id="footer">
-        <div id="footer-watch">
-          <span>Regarder la série</span>
-          <button class="footer-btn-watch">
-            <svg
-              class="footer-svg-watch"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="red"
-            >
-              <path
-                d="M11.2917 3.81415L13.3102 9.52081L13.7059 10.6371L13.7132 5.82625L13.7222 1.00908H17.9931L18.0004 11.8713C18.0031 17.8519 17.9967 22.7617 17.9849 22.7708C17.9731 22.7798 17.7762 22.7708 17.5493 22.7435C16.5601 22.6256 15.2596 22.5076 14.2096 22.4622C13.8629 22.4459 13.5761 22.4277 13.5725 22.4241C13.5698 22.4205 13.3002 21.6618 12.7966 20.2397L12.7967 20.2359C12.3051 18.8476 11.5851 16.8121 10.653 14.1746L10.3126 13.2214L10.3054 17.8066C10.299 22.1718 10.2954 22.4168 10.2482 22.4168C10.0849 22.4168 8.67819 22.5076 8.20809 22.553C7.89953 22.5802 7.28241 22.6437 6.83772 22.6982C6.39212 22.749 6.02185 22.7835 6.01459 22.7762C6.00733 22.7689 6.00098 17.8674 6.00098 11.8831V1.00182H6.00615L6.00551 1H10.2936L10.3217 1.08077C10.3288 1.09558 10.3865 1.25644 10.479 1.51683L11.1204 3.29515L11.2928 3.79066L11.2917 3.81415Z"
-              ></path>
-            </svg>
-            <a href="" class="footer-a-watch">Regarder sur Netflix</a>
-          </button>
-        </div>
-        <div id="footer-social">
-          <h1>coucou</h1>
-        </div>
-      </footer>
-    </section>
+        <section class="section-info section" id="fortiche">
+          <div class="div-fortiche">
+            <h1>FORTICHE</h1>
+          </div>
+        </section>
+      </section>
+
+      <section class="section-info section" id="musique"></section>
+      <section class="section-info section" id="making-of"></section>
+    </main>
+
+    <button id="float-btn-netflix" class="floating-btn">
+      <a
+        href="https://www.netflix.com/fr/title/81435684"
+        rel="noopener noreferrer"
+        target="_blank"
+        class="a-netflix"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M11.2917 3.81415L13.3102 9.52081L13.7059 10.6371L13.7132 5.82625L13.7222 1.00908H17.9931L18.0004 11.8713C18.0031 17.8519 17.9967 22.7617 17.9849 22.7708C17.9731 22.7798 17.7762 22.7708 17.5493 22.7435C16.5601 22.6256 15.2596 22.5076 14.2096 22.4622C13.8629 22.4459 13.5761 22.4277 13.5725 22.4241C13.5698 22.4205 13.3002 21.6618 12.7966 20.2397L12.7967 20.2359C12.3051 18.8476 11.5851 16.8121 10.653 14.1746L10.3126 13.2214L10.3054 17.8066C10.299 22.1718 10.2954 22.4168 10.2482 22.4168C10.0849 22.4168 8.67819 22.5076 8.20809 22.553C7.89953 22.5802 7.28241 22.6437 6.83772 22.6982C6.39212 22.749 6.02185 22.7835 6.01459 22.7762C6.00733 22.7689 6.00098 17.8674 6.00098 11.8831V1.00182H6.00615L6.00551 1H10.2936L10.3217 1.08077C10.3288 1.09558 10.3865 1.25644 10.479 1.51683L11.1204 3.29515L11.2928 3.79066L11.2917 3.81415Z"
+          ></path>
+        </svg>
+        <span class="span-netflix">Regarder sur Netflix</span>
+      </a>
+    </button>
+
+    <button id="float-btn-back" class="floating-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 4.83582L5.79291 11.0429L7.20712 12.4571L12 7.66424L16.7929 12.4571L18.2071 11.0429L12 4.83582ZM12 10.4857L5.79291 16.6928L7.20712 18.107L12 13.3141L16.7929 18.107L18.2071 16.6928L12 10.4857Z"
+        ></path>
+      </svg>
+    </button>
 
     <script src="
     https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
     "></script>
+    <script src="libs/splitText.js"></script>
+
     <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/SplitText.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="js/accueil.js"></script>
+    <script type="module" src="js/accueil.js"></script>
   </body>
 </html>

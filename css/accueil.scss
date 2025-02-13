@@ -26,9 +26,10 @@ $btn-color: #b58646; /* 	Titres, boutons, accents dorés (effet steampunk) */
 $title-color: #b58646; /* 	Titres, boutons, accents dorés (effet steampunk) */
 $light-detail-color: #2dbf7f; /* 	Détails lumineux (effet chimique, ambiance Zaun) */
 $light-effect-color: #3d7ea6; /* Effets lumineux, bordures, hover states*/
-$alert-color: #a64246; /* Accent contrastant (ex. : survol d’un bouton, alerte) */
-$subtexte-color: #3a3a3a; /* Arrière-plans secondaires, textes en retrait */
+$color-alert: #a64246; /* Accent contrastant (ex. : survol d’un bouton, alerte) */
+$color-subtexte: #3a3a3a; /* Arrière-plans secondaires, textes en retrait */
 $color-netflix: #e50914;
+$color-linear-gold: linear-gradient(to right, #b58646, #e0b96b);
 
 @keyframes glow {
   0% {
@@ -49,6 +50,7 @@ $color-netflix: #e50914;
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -56,11 +58,14 @@ html {
   scrollbar-gutter: stable;
   overflow-y: scroll;
   overflow-x: hidden;
+  scroll-snap-type: y proximity;
 }
 
 body {
+  background-color: $background-black;
   scrollbar-gutter: stable;
   overflow: hidden;
+  scroll-snap-type: y proximity;
 }
 
 ::-webkit-scrollbar {
@@ -80,7 +85,7 @@ body {
   width: 100%;
   position: fixed;
   height: 70px;
-  z-index: 10;
+  z-index: 100;
   top: 0;
   left: 0;
   padding-top: 1vh;
@@ -93,7 +98,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    opacity: 0.7;
+    opacity: 1;
     transition: opacity 0.5s ease;
     height: 100%;
     width: 65vw;
@@ -160,7 +165,7 @@ body {
     object-fit: cover;
     will-change: transform;
     height: 100vh;
-    z-index: -10;
+    z-index: -1;
   }
 
   #logo-container {
@@ -195,8 +200,9 @@ body {
       border-radius: 25px;
       background: linear-gradient(to right, #b58646, #e0b96b);
       border: none;
-      transition: filter 1s ease-in-out;
+      transition: all 1s ease-in-out;
       filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+      transform-origin: center;
 
       a {
         width: 100%;
@@ -228,11 +234,12 @@ body {
           vertical-align: middle;
         }
       }
-    }
-    &:hover {
-      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.5));
-      .hero-button-svg {
-        transform: translateX(5px);
+      &:hover {
+        filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.5));
+
+        .hero-button-svg {
+          transform: translateX(5px);
+        }
       }
     }
   }
@@ -242,6 +249,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: $background-black;
+  scroll-snap-align: end;
 }
 
 .highlist-word {
@@ -253,21 +261,34 @@ body {
 }
 
 /*---- DECOUVRIR ---- */
-
+#discover {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
 #div-discover {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  gap: 5vh;
+  z-index: 4;
 
-  .discover-head {
+  // HEADER
+
+  .discover-head,
+  .section-head {
     padding-left: 2vw;
     width: 100%;
+    max-height: 300px;
     line-height: 1;
+    margin-bottom: 5vh;
 
-    .title-discover {
+    .title-discover,
+    .title {
       vertical-align: middle;
       line-height: 1;
       color: white;
@@ -289,80 +310,62 @@ body {
     }
     .discover-subtitle {
       color: white;
-      font-size: 1.3rem;
-      width: 60vw;
+      font-size: clamp(0.7vw, 0.8vw, 1vw);
+      width: 80%;
       line-height: 1.5;
       font-family: $font-playfair;
     }
   }
 
+  // CONTENT
+
   .discover-content {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-grow: 1;
     flex-direction: row;
-    justify-content: space-evenly;
+
     align-items: flex-end;
 
     .discover-content-left {
       width: 100%;
       height: 100%;
       display: flex;
-      gap: 2vh;
-      align-items: flex-start;
+      align-items: center;
       flex-direction: column;
-      justify-content: space-evenly;
+      flex-basis: 40%;
 
-      flex-shrink: 1.7;
-
-      p {
-        color: white;
-        font-size: 1.7em;
-        padding-top: 9%;
-        text-transform: uppercase;
-        width: 80%;
-        line-height: 2.5;
-        height: auto;
-        font-family: $font-lora;
-        padding-left: 2vw;
-      }
-
-      .discover-btn-watch {
-        margin-left: 2vw;
-
-        width: 250px;
-        height: 50px;
-        border-radius: 25px;
-        background: transparent;
-        border: 4px solid $color-netflix;
-
-        a {
-          width: 100%;
-          height: 100%;
-          text-decoration: none;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 5px;
-          span {
-            color: $btn-color;
-            text-transform: uppercase;
-          }
-        }
-        svg {
-          width: 24px;
-          fill: $color-netflix;
-        }
-      }
-
-      .discover-content-sub-left {
+      .discover-content-left-main {
+        flex-basis: 70%;
+        max-width: 730px;
         display: flex;
+        flex-grow: 1;
+        align-items: flex-start;
         flex-direction: column;
-        flex-shrink: 1.7;
-        align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+
+        p {
+          color: white;
+          font-size: clamp(20px, 1.2vw, 1.3vw);
+          text-transform: uppercase;
+          width: 100%;
+          line-height: 2.5;
+          height: auto;
+          text-align: justify;
+          font-family: $font-lora;
+          padding-left: 2vw;
+          padding: clamp(10%, 3vh, 10%) 0 0 2vw;
+        }
+      }
+      .discover-content-sub-left {
         width: 100%;
         height: 100%;
+        flex-basis: 5%;
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         .discover-btn-more {
           width: 250px;
@@ -379,11 +382,15 @@ body {
             justify-content: center;
             align-items: center;
             gap: 5px;
+
             span {
-              color: $btn-color;
               font-weight: bold;
               font-family: $font-robot;
               text-transform: uppercase;
+              background: linear-gradient(to right, #b58646, #e0b96b);
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
             }
 
             svg {
@@ -416,65 +423,404 @@ body {
 
     .discover-content-right {
       display: flex;
+      width: 100%;
+
+      height: 100%;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      height: 100%;
+      flex-basis: 65%;
+      flex-grow: 1;
 
       .splide {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 80%;
-        height: 80%;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+
         .splide__track {
-          width: 100%;
-          height: 100%;
+          width: 85%;
+          height: 85%;
           .splide__list {
             list-style: none;
+            width: 100%;
+            height: 100%;
 
             li {
               width: 100%;
-              height: 90%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
+              height: 100%;
 
-              div {
+              .slide_div {
                 width: 100%;
-                height: 100%;
+                height: 50vh;
                 border-radius: 15px;
                 background: $btn-color;
                 opacity: 1;
-                height: 100%;
                 position: relative;
                 overflow: hidden;
-              }
-              img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+
+                .slide_img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
               }
             }
           }
         }
       }
-    }
 
-    .splide__pagination__page {
-      background-color: $btn-color;
+      #discover-progress-bar-container {
+        width: 100%;
+        height: 100%;
+        flex-basis: 5%;
+        min-height: 150px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        #progress-bar {
+          width: 70%;
+          height: 6px;
+          border-radius: 50px;
+          background-color: white;
+
+          #progress {
+            height: 100%;
+            width: 0%;
+            background: $color-linear-gold;
+            border-radius: 50px;
+            transition: width 0.5s ease-out;
+          }
+        }
+      }
     }
   }
 }
 
-/*---- PERSONNAGES ---- */
+// TRANSITION ENTRE DISCOVER ET CREATION
 
-/*---- FORTICHE ---- */
+#transition-quote {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  z-index: 6;
+  pointer-events: none;
+  justify-content: center;
+  flex-direction: column;
+  transition: transform 1.2s ease-out, opacity 0.2s;
+  text-transform: uppercase;
+  gap: 2vh;
+  padding: 0 2% 0 2%;
+  background: linear-gradient(to right, #b58646, #e0b96b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+
+  #quote-text {
+    font-size: clamp(2rem, 2vw, 2vw);
+    transition: scale 1s ease;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  #author {
+    font-size: clamp(2rem, 1vw, 1vw);
+  }
+}
+
+/*---- CREATION ---- */
+
+#creation {
+  width: 100vw;
+  height: auto;
+  background-color: #3a3a3a;
+  position: relative;
+  z-index: 5;
+
+  #createurs {
+    display: flex;
+    width: 100vw;
+    height: auto;
+    flex-direction: column;
+    background-color: $background-black;
+
+    #creator-paragraph-entry-container {
+      width: 100vw;
+      height: 100vh;
+      background-color: red;
+      display: flex;
+      background: $background-black;
+      justify-content: center;
+      align-items: center;
+
+      .p-entry-creator {
+        color: white;
+        font-weight: bold;
+        line-height: 2;
+        font-size: 2vw;
+        text-transform: uppercase;
+        text-align: justify;
+        width: 50%;
+        height: 50%;
+      }
+    }
+
+    #creator-fixed-background {
+      background-image: url(../assets/image/creation/creator/Vi-powder-piltover_night-background.jpg);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      z-index: 1;
+
+      .cache {
+        width: 100vw;
+        height: 20vh;
+        background: linear-gradient(to top, rgb(0, 0, 0), transparent);
+      }
+
+      .cache-top {
+        background: linear-gradient(to bottom, rgb(0, 0, 0), transparent);
+      }
+    }
+
+    #creator-content {
+      width: 100vw;
+      height: 200vh;
+      display: flex;
+      flex-direction: column;
+      background: none;
+      z-index: 10;
+
+      .div-creator-subsection {
+        width: 100vw;
+        height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #div-creator-chlinke {
+        #creator-content-left-chlinke {
+          height: 100vh;
+          width: 100vw;
+          flex-basis: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          flex-grow: 1;
+          background-color: red;
+          padding: 0;
+          .creator-container {
+            padding: 20px;
+            width: 100%;
+            overflow: hidden;
+            .img-container {
+              width: 100%;
+              border-radius: 25px;
+              overflow: hidden;
+              img {
+                width: 100%;
+              }
+            }
+
+            .information-container {
+              width: 80%;
+              display: flex;
+              justify-content: flex-start;
+              align-items: flex-start;
+              flex-direction: column;
+              gap: 5px;
+              padding-left: 1vw;
+              span {
+                color: white;
+                text-transform: uppercase;
+              }
+              .span-information-creator {
+                background: $color-linear-gold;
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                font-weight: bold;
+                font-size: 3rem;
+              }
+              .span-sub-information-creator {
+                font-size: 1.5rem;
+              }
+            }
+          }
+        }
+        #creator-content-right-chlinke {
+          height: 100vh;
+          width: 100%;
+          flex-basis: 50%;
+          flex-grow: 1;
+        }
+      }
+
+      #div-creator-alexyee {
+        #creator-content-left-alexyee {
+        }
+      }
+    }
+  }
+
+  #fortiche {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      color: white;
+      font-size: 34px;
+    }
+  }
+}
 
 /*---- MUSIQUE ---- */
 
-/*---- CRITIQUES ---- */
-
-/*---- EPISODES ---- */
+/*---- CRITIQUES & AWARDS ---- */
 
 /*---- MAKING OF ---- */
+
+// FLOATINGS BUTTONS
+
+#float-btn-netflix {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  pointer-events: none;
+  right: 0;
+  margin: 20px;
+  width: 3vw;
+  opacity: 0;
+  height: 3vw;
+  background: none;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid #e50914;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+
+  transform-origin: right;
+
+  .a-netflix {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: relative;
+    .span-netflix {
+      font-family: $font-robot;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $color-netflix;
+      opacity: 0;
+
+      white-space: nowrap;
+      transition: left 0.3s ease-out, opacity 0.3s ease-out;
+      position: absolute;
+      left: 120%;
+    }
+
+    svg {
+      fill: $color-netflix;
+      width: 2vw;
+      transition: all 0.2s ease;
+    }
+  }
+
+  &:hover {
+    border-radius: 15px;
+    width: clamp(8vw, 10vw, 12vw);
+    opacity: 1;
+    padding-right: 1vw;
+
+    .a-netflix {
+      justify-content: flex-start;
+
+      padding-left: 5px;
+
+      .span-netflix {
+        left: 30%;
+        opacity: 1;
+      }
+    }
+  }
+
+  &.show-floating-button {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
+
+#float-btn-back {
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+  width: 2vw;
+  height: 2vw;
+  opacity: 0;
+  background: none;
+  overflow: hidden;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.5s ease;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    transition: all 0.25s ease-out;
+    fill: white;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -3px; // Décale légèrement pour créer l'effet de bordure
+    border-radius: inherit;
+    padding: 5.5px; // Largeur de la bordure
+    background: $color-linear-gold;
+    mask: linear-gradient(white, white) content-box,
+      linear-gradient(white, white);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(white, white) content-box,
+      linear-gradient(white, white);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+
+  &.show-floating-button {
+    opacity: 1;
+
+    &:hover {
+      svg {
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
