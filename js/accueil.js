@@ -46,9 +46,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // CAROUSSELS
+
   var bar = document.querySelector("#progress");
 
-  var splide = new Splide("#splide-carousel", {
+  var splide_discover = new Splide("#splide-carousel-discover", {
     type: "loop",
     updateOnMove: true,
     perPage: 1,
@@ -63,16 +65,30 @@ document.addEventListener("DOMContentLoaded", function () {
     speed: 1000,
   });
 
-  splide.on("mounted move", function () {
-    var end = splide.Components.Controller.getEnd() + 1;
-    var rate = Math.min((splide.index + 1) / end, 1);
+  splide_discover.on("mounted move", function () {
+    var end = splide_discover.Components.Controller.getEnd() + 1;
+    var rate = Math.min((splide_discover.index + 1) / end, 1);
 
     if (bar) {
       bar.style.width = String(100 * rate) + "%";
     }
   });
 
-  splide.mount();
+  splide_discover.mount();
+
+  var splide_discover_fortiche = new Splide("#splide-carousel-fortiche", {
+    type: "fade",
+    updateOnMove: true,
+    perPage: 1,
+    lazyload: "nearby",
+    rewind: true,
+    pagination: false,
+    arrows: false,
+    autoplay: true,
+    interval: 5000,
+    pauseOnHover: false,
+    speed: 1000,
+  }).mount();
 
   // FLOATING BUTTONS
 
@@ -152,25 +168,261 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ANIMATIONS SCROLLING CREATION //
 
-  let tl_anim_EntryToCreation = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#creator-paragraph-entry-container",
-      start: "top top",
-      end: "+=100%",
-      scrub: true,
-      markers: true,
-      pin: true,
-    },
-  });
-
-  let tl_anim_createur = gsap.timeline({
+  let tl_anim_creation = gsap.timeline({
     scrollTrigger: {
       trigger: "#creator-fixed-background",
       start: "top top",
-      end: "+=300%",
-      scrub: true,
+      end: "bottom+=300% bottom",
+      endTrigger: "#div-creator-alexyee",
+      scrub: 0.5,
+      pin: true,
       markers: true,
-      pin: false,
     },
   });
+
+  // ANIMATION PARAGRAPHE CHRISTIAN LINKE
+
+  let tl_anim_chlinke = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#div-creator-chlinke",
+      start: "center bottom",
+      end: "center+=30% top",
+      scrub: true,
+      pin: false,
+      markers: true,
+    },
+  });
+
+  tl_anim_chlinke.from(
+    [
+      ".img-container-chlinke",
+      ".creator-description-chlinke",
+      ".span-information-creator-chlinke",
+      ".span-sub-information-creator-chlinke",
+    ],
+    {
+      opacity: 0,
+      y: 50,
+      stagger: 0.7,
+      duration: 1,
+    }
+  );
+
+  tl_anim_chlinke.to(
+    [
+      ".img-container-chlinke",
+      ".creator-description-chlinke",
+      ".span-information-creator-chlinke",
+      ".span-sub-information-creator-chlinke",
+    ],
+    {
+      opacity: 0,
+      y: -50,
+      stagger: 0.7,
+      duration: 1,
+    },
+    "+=3"
+  );
+
+  let tl_animation_alexyee = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#div-creator-alexyee",
+      start: "center bottom",
+      end: "center+=30% top",
+      scrub: true,
+      pin: false,
+      markers: true,
+    },
+  });
+
+  tl_animation_alexyee.from(
+    [
+      ".img-container-alexyee",
+      ".creator-description-alexyee",
+      ".span-information-creator-alexyee",
+      ".span-sub-information-creator-alexyee",
+    ],
+    {
+      opacity: 0,
+      y: 50,
+      stagger: 0.7,
+    }
+  );
+
+  tl_animation_alexyee.to(
+    [
+      ".img-container-alexyee",
+      ".creator-description-alexyee",
+      ".span-information-creator-alexyee",
+      ".span-sub-information-creator-alexyee",
+    ],
+    {
+      opacity: 0,
+      y: -50,
+      stagger: 0.7,
+    },
+    "+=3"
+  );
+
+  let tl_anim_ToFortiche = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#div-creator-alexyee",
+      start: "bottom top",
+      end: "bottom+=300% bottom",
+      scrub: true,
+      pin: true,
+      markers: true,
+      pinspacing: true,
+    },
+  });
+
+  tl_anim_ToFortiche.to("#creator-fixed-background", {
+    opacity: 0,
+    duration: 1,
+  });
+
+  tl_anim_ToFortiche.to("#transition-quote-fortiche", { opacity: 1 });
+
+  tl_anim_ToFortiche.to(
+    "#transition-quote-fortiche",
+    {
+      opacity: 1,
+      scale: 1,
+      duration: 2,
+      ease: "power2.out",
+    },
+    "-=0.5"
+  );
+
+  tl_anim_ToFortiche.to(
+    "#transition-quote-fortiche",
+    {
+      scale: 10,
+      opacity: 0,
+      duration: 3,
+      ease: "power2.in",
+    },
+
+    "+=3"
+  );
+
+  // ANIMATIONS DES FIGURES
+
+  gsap.utils.toArray(".fortiche-figure").forEach((figure) => {
+    let tl_anim_figures = gsap.timeline({
+      scrollTrigger: {
+        trigger: figure,
+        start: "center bottom",
+        end: "center+=30% top",
+        scrub: true,
+        pin: false,
+        markers: false,
+      },
+    });
+
+    tl_anim_figures.from(
+      figure.querySelectorAll(".img-wrapper, .figure-name"),
+      {
+        opacity: 0,
+        stagger: 0.1,
+        x: -50,
+        duration: 1.2,
+        ease: "power2.out",
+      }
+    );
+
+    tl_anim_figures.from(
+      figure.querySelectorAll(".figure-role"),
+      {
+        opacity: 0,
+        x: 50,
+        duration: 1,
+        ease: "power2.out",
+      },
+      "-=0.5"
+    );
+
+    tl_anim_figures.from(
+      figure.querySelectorAll(".paragraph-figure .line"),
+      {
+        opacity: 0,
+        y: 20,
+        stagger: 0.4,
+        duration: 1,
+        ease: "power3.out",
+      },
+      "-=2"
+    );
+
+    tl_anim_figures.to(figure.querySelectorAll(".img-wrapper, .figure-name"), {
+      opacity: 0,
+      x: 100, // Mouvement vers la droite (inverse de l'entrée)
+      duration: 1.2,
+      ease: "power2.in",
+    });
+
+    tl_anim_figures.to(figure.querySelectorAll(".figure-role"), {
+      opacity: 0,
+      x: -100,
+      duration: 1,
+      ease: "power2.in",
+    });
+
+    tl_anim_figures.to(
+      figure.querySelectorAll(".paragraph-figure .line"),
+      {
+        opacity: 0,
+        y: -20,
+        stagger: 0.3,
+        duration: 0.5,
+        ease: "power3.in",
+      },
+      "-=2"
+    );
+  });
+
+  var splide_timeline_fortiche = new Splide("#timeline-project-fortiche", {
+    type: "fade",
+    updateOnMove: true,
+    perPage: 1,
+    lazyload: "nearby",
+    rewind: false,
+    pagination: false,
+    arrows: false,
+    autoplay: false,
+    speed: 1000,
+  });
+
+  const PB_Fortiche = document.getElementById("timeline-progress-bar");
+  const PB_Progression_Fortiche = document.getElementById(
+    "timeline-progression"
+  );
+
+  splide_timeline_fortiche.on("mounted move", function () {
+    var end = splide_timeline_fortiche.Components.Controller.getEnd() + 1;
+    var rate = Math.min((splide_timeline_fortiche.index + 1) / end, 1);
+    if (PB_Fortiche) {
+      PB_Progression_Fortiche.style.width = String(100 * rate) + "%";
+    }
+  });
+
+  PB_Fortiche.addEventListener("click", function (e) {
+    const rect = PB_Fortiche.getBoundingClientRect();
+
+    const clickX = e.clientX - rect.left;
+
+    const progressPercent = clickX / rect.width;
+
+    const slideIndex = Math.round(
+      progressPercent * (splide_timeline_fortiche.length - 1)
+    );
+    console.log(slideIndex);
+    splide_timeline_fortiche.go(slideIndex);
+  });
+
+  
+
+
+
+  splide_timeline_fortiche.mount();
 });
