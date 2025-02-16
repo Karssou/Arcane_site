@@ -295,7 +295,7 @@ body {
       vertical-align: middle;
       line-height: 1;
       color: white;
-      font-size: 5rem;
+      font-size: clamp(48px, 8vw, 100px); // 5rem
       font-family: "font-arcane";
       display: flex;
       justify-content: flex-start;
@@ -308,12 +308,12 @@ body {
       img {
         margin-bottom: -3px;
         vertical-align: middle;
-        width: 20rem;
+        width: clamp(450px, 25vw, 500px);
       }
     }
     .discover-subtitle {
       color: white;
-      font-size: clamp(0.7vw, 0.8vw, 1vw);
+      font-size: clamp(16px, 1vw, 24px);
       width: 80%;
       line-height: 1.5;
       font-family: $font-playfair;
@@ -548,7 +548,8 @@ body {
   max-width: 2500px;
   margin: 0 auto;
   width: 100vw;
-  height: auto;
+  margin-bottom: 100vh;
+  height: fit-content;
   position: relative;
   z-index: 5;
 
@@ -566,25 +567,26 @@ body {
     #creator-paragraph-entry-container {
       width: 100vw;
       height: 100vh;
-      background-color: red;
-      display: flex;
       max-width: 2500px;
       margin: 0 auto;
+      margin-bottom: 50px;
 
-      background: $background-black;
+      display: flex;
       justify-content: center;
       align-items: center;
+      padding: 2rem;
+    }
 
-      .p-entry-creator {
-        color: white;
-        font-weight: bold;
-        line-height: 2;
-        font-size: 1.5vw;
-        text-transform: uppercase;
-        text-align: justify;
-        width: 50%;
-        height: 50%;
-      }
+    .p-entry-creator {
+      color: white;
+      font-weight: bold;
+      line-height: 1.4;
+      font-size: clamp(1rem, 4vw, 3.5rem);
+      text-transform: uppercase;
+      text-align: justify;
+      max-width: 80%;
+      min-width: 30%;
+      width: 50%;
     }
 
     #creator-fixed-background {
@@ -594,13 +596,12 @@ body {
       background-attachment: fixed;
       width: 100vw;
       margin: 0 auto;
+
       max-width: 2500px;
       transition: opacity 1s ease;
       height: 100vh;
       display: flex;
       flex-direction: column;
-
-      position: absolute;
       justify-content: space-between;
       align-items: flex-start;
       z-index: 1;
@@ -1025,6 +1026,7 @@ body {
                 .timeline-slide {
                   position: relative;
                   width: 80%;
+                  box-shadow: $btn-color 0px 0px 20px;
                   height: 80%;
                   overflow: hidden;
                   border-radius: 25px;
@@ -1076,7 +1078,8 @@ body {
           position: relative;
           height: 10px;
           width: 80%;
-          transition: height 0.15s ease;
+          transition: all 0.15s ease;
+          box-shadow: $btn-color 0px 3px 8px;
 
           .timeline-point {
             position: absolute;

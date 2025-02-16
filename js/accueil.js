@@ -164,6 +164,22 @@ document.addEventListener("DOMContentLoaded", function () {
     "+=3"
   );
 
+  // ANIMATION ENTRY PARAGRAPH
+
+  gsap.to("#creator-paragraph-entry-container", {
+    scrollTrigger: {
+      trigger: "#creator-paragraph-entry-container",
+      start: "top top",
+      end: "bottom top",
+      pin: true,
+      scrub: 0.5,
+      markers: false,
+    },
+    opacity: 0,
+    duration: 2,
+    ease: "power1.out",
+  });
+
   // ANIMATIONS SCROLLING CREATION //
 
   let tl_anim_creation = gsap.timeline({
@@ -172,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
       start: "top top",
       end: "bottom+=300% bottom",
       endTrigger: "#div-creator-alexyee",
-      scrub: 0.5,
+      scrub: true,
       pin: true,
       markers: true,
     },
@@ -183,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let tl_anim_chlinke = gsap.timeline({
     scrollTrigger: {
       trigger: "#div-creator-chlinke",
-      start: "center bottom",
+      start: "center-=30% bottom",
       end: "center+=30% top",
       scrub: true,
       pin: false,
@@ -227,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let tl_animation_alexyee = gsap.timeline({
     scrollTrigger: {
       trigger: "#div-creator-alexyee",
-      start: "center bottom",
+      start: "center-=30% bottom",
       end: "center+=30% top",
       scrub: true,
       pin: false,
