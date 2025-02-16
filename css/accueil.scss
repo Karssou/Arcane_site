@@ -269,8 +269,6 @@ body {
   z-index: 3;
   overflow: hidden;
   scroll-snap-align: start;
-  max-width: 2500px;
-  margin: 0 auto;
 }
 #div-discover {
   width: 100vw;
@@ -279,6 +277,8 @@ body {
   justify-content: flex-start;
   flex-direction: column;
   z-index: 4;
+  max-width: 2500px;
+  margin: 0 auto;
 
   // HEADER
 
@@ -350,15 +350,15 @@ body {
 
         p {
           color: white;
-          font-size: clamp(20px, 1.2vw, 1.3vw);
+          font-size: clamp(20px, 1.2vw, 2rem);
           text-transform: uppercase;
           width: 100%;
           line-height: 2.5;
           height: auto;
           text-align: justify;
           font-family: $font-lora;
-          padding-left: 2vw;
-          padding: clamp(10%, 3vh, 10%) 0 0 2vw;
+
+          padding: clamp(10%, 3vh, 10%) 0 0 0;
         }
       }
       .discover-content-sub-left {
@@ -557,6 +557,8 @@ body {
     width: 100vw;
     max-width: 2500px;
     margin: 0 auto;
+    margin-bottom: 200vh;
+    position: relative;
     height: auto;
     flex-direction: column;
     background-color: $background-black;
@@ -591,13 +593,14 @@ body {
       background-position: center;
       background-attachment: fixed;
       width: 100vw;
+      margin: 0 auto;
       max-width: 2500px;
       transition: opacity 1s ease;
       height: 100vh;
       display: flex;
       flex-direction: column;
-      margin: 0 auto;
 
+      position: absolute;
       justify-content: space-between;
       align-items: flex-start;
       z-index: 1;
@@ -638,7 +641,7 @@ body {
         line-height: 2;
         text-transform: uppercase;
         text-align: justify;
-        font-size: 1.3vw;
+        font-size: clamp(1rem, 1.3vw, 32px);
       }
 
       .creator-container {
@@ -680,10 +683,10 @@ body {
             background-clip: text;
             color: transparent;
             font-weight: bold;
-            font-size: 3vw;
+            font-size: clamp(5rem, 5vw, 50px);
           }
           .span-sub-information-creator {
-            font-size: 1.3vw;
+            font-size: clamp(1.5rem, 3vw, 24px);
             font-weight: lighter;
           }
         }
@@ -748,20 +751,20 @@ body {
 
 #fortiche {
   width: 100vw;
-  margin: 300vh auto;
+  margin: 0 auto;
   height: 400vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-start;
+
   gap: 10vh;
   max-width: 2500px;
 
   #fortiche-fixed-background {
     display: flex;
     width: 100vw;
+    max-width: 2500px;
+    margin: 0 auto;
     height: 100vh;
-
+    position: relative;
+    z-index: 1;
     align-items: center;
     justify-content: center;
 
@@ -776,13 +779,15 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 10;
+    position: relative;
 
     #discover-fortiche {
       width: 100vw;
       max-width: 2500px;
       margin: 0 auto;
-      height: auto;
-      min-height: 100vh;
+      margin-bottom: 30vh;
+      height: clamp(100vh, 100vh, 120vh);
       position: relative;
       display: flex;
       flex-direction: column;
@@ -1019,7 +1024,6 @@ body {
                 justify-content: center;
                 .timeline-slide {
                   position: relative;
-
                   width: 80%;
                   height: 80%;
                   overflow: hidden;
@@ -1065,16 +1069,34 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
+
         #timeline-progress-bar {
           background: white;
           border-radius: 25px;
+          position: relative;
           height: 10px;
           width: 80%;
           transition: height 0.15s ease;
 
+          .timeline-point {
+            position: absolute;
+            top: -2px;
+            width: 15px;
+            height: 15px;
+            transition: all 0.15s ease;
+            background-color: #9a5a5a;
+            border-radius: 50%;
+            cursor: pointer;
+          }
+
           &:hover {
             cursor: pointer;
             height: 15px;
+
+            .timeline-point {
+              height: 20px;
+              width: 20px;
+            }
           }
 
           #timeline-progression {
@@ -1082,7 +1104,6 @@ body {
             border-radius: 25px;
             height: 100%;
             transition: all 0.5s ease;
-
             background: $color-linear-gold;
           }
         }
@@ -1106,16 +1127,15 @@ body {
   pointer-events: none;
   right: 0;
   margin: 20px;
-  width: 3vw;
+  width: clamp(15px, 4vw, 60px);
   opacity: 0;
-  height: 3vw;
+  height: clamp(15px, 4vw, 60px);
   background: none;
   overflow: hidden;
   border-radius: 50%;
   border: 3px solid #e50914;
   cursor: pointer;
   transition: all 0.5s ease-out;
-
   transform-origin: right;
 
   .a-netflix {
@@ -1128,7 +1148,7 @@ body {
     position: relative;
     .span-netflix {
       font-family: $font-robot;
-      font-size: 12px;
+      font-size: clamp(12px, 0.5vw, 24px);
       font-weight: bold;
       text-transform: uppercase;
       color: $color-netflix;
@@ -1142,24 +1162,24 @@ body {
 
     svg {
       fill: $color-netflix;
-      width: 2vw;
+      width: clamp(12px, 2vw, 40px);
       transition: all 0.2s ease;
     }
   }
 
   &:hover {
     border-radius: 15px;
-    width: clamp(8vw, 10vw, 12vw);
+    width: clamp(100px, 10vw, 300px);
     opacity: 1;
-    padding-right: 1vw;
+    padding-right: 14px;
 
     .a-netflix {
       justify-content: flex-start;
 
-      padding-left: 5px;
+      padding-left: 2px;
 
       .span-netflix {
-        left: 30%;
+        left: 25%;
         opacity: 1;
       }
     }
@@ -1177,8 +1197,8 @@ body {
   bottom: 0;
   right: 0;
   margin: 20px;
-  width: 2vw;
-  height: 2vw;
+  width: clamp(15px, 4vw, 60px);
+  height: clamp(15px, 4vw, 60px);
   opacity: 0;
   background: none;
   overflow: hidden;

@@ -1,5 +1,3 @@
-import { SplitText } from "../libs/splitText.js";
-
 document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -205,6 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
       y: 50,
       stagger: 0.7,
       duration: 1,
+      ease: "power2.out",
     }
   );
 
@@ -220,6 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
       y: -50,
       stagger: 0.7,
       duration: 1,
+      ease: "power2.in",
     },
     "+=3"
   );
@@ -246,6 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
       opacity: 0,
       y: 50,
       stagger: 0.7,
+      ease: "power2.out",
     }
   );
 
@@ -260,6 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
       opacity: 0,
       y: -50,
       stagger: 0.7,
+      ease: "power2.in",
     },
     "+=3"
   );
@@ -305,6 +307,79 @@ document.addEventListener("DOMContentLoaded", function () {
 
     "+=3"
   );
+
+  // ANIMATION FIXED BACKGROUND
+
+  gsap.to("#fortiche-fixed-background", {
+    scrollTrigger: {
+      trigger: "#fortiche-fixed-background",
+      start: "bottom bottom",
+      end: "top bottom",
+      endTrigger: "#timeline-container",
+      markers: true,
+      pin: true,
+      scrub: true,
+      pinSpacing: false,
+    },
+    opacity: 0.5,
+  });
+
+  // ANIMATION DISCOVER
+
+  let tl_anim_DiscoverFortiche = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#discover-fortiche",
+      start: "center bottom",
+      end: "center+=30% top",
+      scrub: true,
+      pin: false,
+      markers: true,
+    },
+  });
+
+  tl_anim_DiscoverFortiche.from(".title-discover-fortiche", {
+    opacity: 0,
+    y: 40,
+  });
+
+  tl_anim_DiscoverFortiche.from(
+    ".fortiche-subtext",
+    { opacity: 0, y: 40 },
+    "-=1"
+  );
+
+  tl_anim_DiscoverFortiche.from(
+    "#splide-carousel-fortiche",
+    {
+      opacity: 0,
+      x: 40,
+    },
+    "-=1"
+  );
+
+  tl_anim_DiscoverFortiche.from(
+    ".fortiche-presentation",
+    {
+      opacity: 0,
+      x: -40,
+    },
+    "-=1"
+  );
+
+  tl_anim_DiscoverFortiche.to(
+    ".title-discover-fortiche",
+    {
+      opacity: 0,
+      y: -40,
+    },
+    "+=1"
+  );
+  tl_anim_DiscoverFortiche.to(".fortiche-subtext", { opacity: 0, y: -40 });
+  tl_anim_DiscoverFortiche.to(".fortiche-presentation", { opacity: 0, x: -40 });
+  tl_anim_DiscoverFortiche.to("#splide-carousel-fortiche", {
+    opacity: 0,
+    x: 40,
+  });
 
   // ANIMATIONS DES FIGURES
 
@@ -419,10 +494,6 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(slideIndex);
     splide_timeline_fortiche.go(slideIndex);
   });
-
-  
-
-
 
   splide_timeline_fortiche.mount();
 });

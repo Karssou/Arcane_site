@@ -242,8 +242,6 @@ body {
   z-index: 3;
   overflow: hidden;
   scroll-snap-align: start;
-  max-width: 2500px;
-  margin: 0 auto;
 }
 
 #div-discover {
@@ -253,6 +251,8 @@ body {
   justify-content: flex-start;
   flex-direction: column;
   z-index: 4;
+  max-width: 2500px;
+  margin: 0 auto;
 }
 #div-discover .discover-head,
 #div-discover .section-head {
@@ -322,15 +322,14 @@ body {
 }
 #div-discover .discover-content .discover-content-left .discover-content-left-main p {
   color: white;
-  font-size: clamp(20px, 1.2vw, 1.3vw);
+  font-size: clamp(20px, 1.2vw, 2rem);
   text-transform: uppercase;
   width: 100%;
   line-height: 2.5;
   height: auto;
   text-align: justify;
   font-family: "Lora", serif;
-  padding-left: 2vw;
-  padding: clamp(10%, 3vh, 10%) 0 0 2vw;
+  padding: clamp(10%, 3vh, 10%) 0 0 0;
 }
 #div-discover .discover-content .discover-content-left .discover-content-sub-left {
   width: 100%;
@@ -503,6 +502,8 @@ body {
   width: 100vw;
   max-width: 2500px;
   margin: 0 auto;
+  margin-bottom: 200vh;
+  position: relative;
   height: auto;
   flex-direction: column;
   background-color: #0d0d0d;
@@ -534,12 +535,13 @@ body {
   background-position: center;
   background-attachment: fixed;
   width: 100vw;
+  margin: 0 auto;
   max-width: 2500px;
   transition: opacity 1s ease;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  position: absolute;
   justify-content: space-between;
   align-items: flex-start;
   z-index: 1;
@@ -576,7 +578,7 @@ body {
   line-height: 2;
   text-transform: uppercase;
   text-align: justify;
-  font-size: 1.3vw;
+  font-size: clamp(1rem, 1.3vw, 32px);
 }
 #creation #createurs #creator-content .creator-container {
   padding: 20px;
@@ -615,10 +617,10 @@ body {
   background-clip: text;
   color: transparent;
   font-weight: bold;
-  font-size: 3vw;
+  font-size: clamp(5rem, 5vw, 50px);
 }
 #creation #createurs #creator-content .creator-container .information-container .span-sub-information-creator {
-  font-size: 1.3vw;
+  font-size: clamp(1.5rem, 3vw, 24px);
   font-weight: lighter;
 }
 #creation #createurs #creator-content #div-creator-chlinke {
@@ -676,19 +678,19 @@ body {
 
 #fortiche {
   width: 100vw;
-  margin: 300vh auto;
+  margin: 0 auto;
   height: 400vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-start;
   gap: 10vh;
   max-width: 2500px;
 }
 #fortiche #fortiche-fixed-background {
   display: flex;
   width: 100vw;
+  max-width: 2500px;
+  margin: 0 auto;
   height: 100vh;
+  position: relative;
+  z-index: 1;
   align-items: center;
   justify-content: center;
 }
@@ -701,13 +703,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 10;
+  position: relative;
 }
 #fortiche #fortiche-content #discover-fortiche {
   width: 100vw;
   max-width: 2500px;
   margin: 0 auto;
-  height: auto;
-  min-height: 100vh;
+  margin-bottom: 30vh;
+  height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -966,13 +970,28 @@ body {
 #fortiche #fortiche-content #fortiche-timeline #timeline-progress-bar-container #timeline-progress-bar {
   background: white;
   border-radius: 25px;
+  position: relative;
   height: 10px;
   width: 80%;
   transition: height 0.15s ease;
 }
+#fortiche #fortiche-content #fortiche-timeline #timeline-progress-bar-container #timeline-progress-bar .timeline-point {
+  position: absolute;
+  top: -2px;
+  width: 15px;
+  height: 15px;
+  transition: all 0.15s ease;
+  background-color: #9a5a5a;
+  border-radius: 50%;
+  cursor: pointer;
+}
 #fortiche #fortiche-content #fortiche-timeline #timeline-progress-bar-container #timeline-progress-bar:hover {
   cursor: pointer;
   height: 15px;
+}
+#fortiche #fortiche-content #fortiche-timeline #timeline-progress-bar-container #timeline-progress-bar:hover .timeline-point {
+  height: 20px;
+  width: 20px;
 }
 #fortiche #fortiche-content #fortiche-timeline #timeline-progress-bar-container #timeline-progress-bar #timeline-progression {
   width: 0%;
@@ -992,9 +1011,9 @@ body {
   pointer-events: none;
   right: 0;
   margin: 20px;
-  width: 3vw;
+  width: clamp(15px, 4vw, 60px);
   opacity: 0;
-  height: 3vw;
+  height: clamp(15px, 4vw, 60px);
   background: none;
   overflow: hidden;
   border-radius: 50%;
@@ -1014,7 +1033,7 @@ body {
 }
 #float-btn-netflix .a-netflix .span-netflix {
   font-family: "Roboto", serif;
-  font-size: 12px;
+  font-size: clamp(12px, 0.5vw, 24px);
   font-weight: bold;
   text-transform: uppercase;
   color: #e50914;
@@ -1026,21 +1045,21 @@ body {
 }
 #float-btn-netflix .a-netflix svg {
   fill: #e50914;
-  width: 2vw;
+  width: clamp(12px, 2vw, 40px);
   transition: all 0.2s ease;
 }
 #float-btn-netflix:hover {
   border-radius: 15px;
-  width: 10vw;
+  width: clamp(100px, 10vw, 300px);
   opacity: 1;
-  padding-right: 1vw;
+  padding-right: 14px;
 }
 #float-btn-netflix:hover .a-netflix {
   justify-content: flex-start;
-  padding-left: 5px;
+  padding-left: 2px;
 }
 #float-btn-netflix:hover .a-netflix .span-netflix {
-  left: 30%;
+  left: 25%;
   opacity: 1;
 }
 #float-btn-netflix.show-floating-button {
@@ -1054,8 +1073,8 @@ body {
   bottom: 0;
   right: 0;
   margin: 20px;
-  width: 2vw;
-  height: 2vw;
+  width: clamp(15px, 4vw, 60px);
+  height: clamp(15px, 4vw, 60px);
   opacity: 0;
   background: none;
   overflow: hidden;
